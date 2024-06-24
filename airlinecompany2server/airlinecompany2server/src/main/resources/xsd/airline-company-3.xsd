@@ -4,6 +4,7 @@
            targetNamespace="http://localhost:8082/"
            elementFormDefault="qualified">
 
+    <!-- FindAllAirportsRequest -->
     <xs:element name="FindAllAirportsRequest">
         <xs:complexType>
             <xs:sequence>
@@ -11,6 +12,7 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- FindAllAirportsResponse -->
     <xs:element name="FindAllAirportsResponse">
         <xs:complexType>
             <xs:sequence>
@@ -19,12 +21,32 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- SearchAirportsRequest -->
+    <xs:element name="SearchAirportsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SearchFilter" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- SearchAirportsResponse -->
+    <xs:element name="SearchAirportsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Airports" type="AirportListType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- AirportListType -->
     <xs:complexType name="AirportListType">
         <xs:sequence>
             <xs:element name="Airport" type="AirportType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
+    <!-- AirportType -->
     <xs:complexType name="AirportType">
         <xs:sequence>
             <xs:element name="AirportName" type="xs:string"/>

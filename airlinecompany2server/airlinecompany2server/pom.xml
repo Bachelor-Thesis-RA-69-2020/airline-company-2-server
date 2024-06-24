@@ -95,6 +95,13 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+
+		<!-- JAXB Runtime -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.5</version>
+		</dependency>
 		
 		<!-- Jakarta XML Web Services API -->
 		<dependency>
@@ -110,6 +117,7 @@
 			<version>2.3.3</version>
 		</dependency>
 
+		<!-- WSDL4J -->
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>

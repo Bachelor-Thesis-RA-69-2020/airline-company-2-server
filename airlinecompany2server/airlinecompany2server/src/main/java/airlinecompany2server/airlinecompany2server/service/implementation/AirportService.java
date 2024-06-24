@@ -27,9 +27,14 @@ public class AirportService implements IAirportService {
     }
 
     @Override
-    public Airport findByIataCode(String iataCode) {
-        Airport airport = airportRepository.findByIataCode(iataCode).orElseThrow();
+    public List<Airport> search(String searchFilter) {
+        List<Airport> airports = airportRepository.findAll();
 
-        return airport;
+        final String filter = searchFilter.toLowerCase();
+        airports = airports.stream()
+            .filter(a -> a.getAirportName().toLowerCase().contains(filter) || a.getIataCode().toLowerCase().contains(filter))
+            .toList();
+
+        return airports;
     }
 }

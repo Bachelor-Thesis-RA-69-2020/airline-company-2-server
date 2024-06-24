@@ -7,5 +7,5 @@ import airlinecompany2server.airlinecompany2server.model.domain.Airport;
 public interface IAirportService {
     List<Airport> findAll();
 
-    Airport findByIataCode(String iataCode);
+    List<Airport> search(String searchFilter);
 }

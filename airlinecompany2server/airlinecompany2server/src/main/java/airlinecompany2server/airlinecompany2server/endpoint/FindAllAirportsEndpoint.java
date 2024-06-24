@@ -12,15 +12,15 @@ import org.springframework.ws.server.endpoint.annotation.*;
 import airlinecompany2server.airlinecompany2server.endpoint.message.request.FindAllAirportsRequest;
 import airlinecompany2server.airlinecompany2server.endpoint.message.response.FindAllAirportsResponse;
 import airlinecompany2server.airlinecompany2server.model.domain.Airport;
-import airlinecompany2server.airlinecompany2server.service.implementation.AirportService;
+import airlinecompany2server.airlinecompany2server.service.IAirportService;
 
 @Endpoint
-public class FindAllAirportsEndpoint {
+public class FindAllAirportsEndpoint extends BaseEndpoint {
 
     private static final String NAMESPACE_URI = "http://localhost:8082/";
 
     @Autowired
-    private AirportService airportService;
+    private IAirportService airportService;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "FindAllAirportsRequest")
     @ResponsePayload
