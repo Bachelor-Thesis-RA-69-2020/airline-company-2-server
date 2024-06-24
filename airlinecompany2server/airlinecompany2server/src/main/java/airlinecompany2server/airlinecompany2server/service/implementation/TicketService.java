@@ -33,6 +33,7 @@ public class TicketService implements ITicketService {
         for(int i = 1; i <= count; i++) {
             String code = generateTicketCode(flightCode, flightClass, i);
             Ticket ticket = new Ticket(code, price, flightClass);
+            ticket.validate();
             tickets.add(ticket);
         }
 

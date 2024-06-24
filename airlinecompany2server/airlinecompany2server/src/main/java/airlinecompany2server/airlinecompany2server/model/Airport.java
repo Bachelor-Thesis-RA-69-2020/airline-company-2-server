@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.*;
 
 @Document(collection = "airports")
-public class Airport {
+public class Airport extends BaseEntity {
     @Id
     private String id;
 

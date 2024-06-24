@@ -62,6 +62,7 @@ public class AirportsDataConfiguration {
                             values[9],
                             values[10]
                     );
+                    airport.validate();
                     airports.add(airport);
                 }
             }

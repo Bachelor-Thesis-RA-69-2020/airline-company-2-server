@@ -37,14 +37,13 @@ public class FlightService implements IFlightService {
 
             flight.setRelation(departureAirport, arrivalAirport);
 
-            flight.validateTimes();
-
             String code = generateFlightCode(flight);
             flight.setCode(code);
 
             List<Ticket> tickets = ticketService.generateTickets(code, pricing);
             flight.addTickets(tickets);
 
+            flight.validate();
             flightRepository.save(flight);
 
             return "Flight created.";

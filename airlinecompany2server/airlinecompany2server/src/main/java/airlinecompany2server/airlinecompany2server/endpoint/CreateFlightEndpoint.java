@@ -33,7 +33,7 @@ public class CreateFlightEndpoint extends BaseEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "CreateFlightRequest")
     @ResponsePayload
-    public JAXBElement<CreateFlightResponse> searchAirports(@RequestPayload Source request) throws TransformerException {
+    public JAXBElement<CreateFlightResponse> createFlight(@RequestPayload Source request) throws TransformerException {
         CreateFlightRequest createRequest = parseRequest(request);
         String result = flightService.create(createRequest.mapToFlightDomain(), createRequest.getDepartureAirportIata(), createRequest.getArrivalAirportIata(), createRequest.mapToTicketPricingDomain());
 

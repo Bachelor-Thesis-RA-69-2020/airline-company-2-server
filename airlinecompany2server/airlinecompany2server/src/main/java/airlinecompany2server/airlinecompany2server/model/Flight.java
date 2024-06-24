@@ -3,6 +3,7 @@ package airlinecompany2server.airlinecompany2server.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import jakarta.validation.constraints.*;
 
 import java.time.Duration;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "flights")
-public class Flight {
+public class Flight extends BaseEntity {
     
     @Id
     private String id;
@@ -49,6 +50,8 @@ public class Flight {
 
     private List<Ticket> tickets;
 
+    private List<Discount> discounts;
+
     public Flight() {
     }
 
@@ -60,6 +63,7 @@ public class Flight {
         this.luggageRules = luggageRules;
         this.juniorDiscount = juniorDiscount;
         tickets = new ArrayList<>();
+        discounts= new ArrayList<>();
     }
 
     public String getCode() {
@@ -107,17 +111,26 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public void validateTimes() {
-        if(!takeoffTime.isAfter(LocalDateTime.now()) && !landingTime.isAfter(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Take-off and landing times must be in future.");
+    @Override
+    public void validate() {
+        super.validate();
+
+        LocalDateTime now = LocalDateTime.now();
+
+        if (!takeoffTime.isAfter(now) && !landingTime.isAfter(now)) {
+            throw new IllegalArgumentException("Validation: Take-off and landing times must be in the future.");
         }
 
-        if(takeoffTime.isAfter(landingTime)) {
-            throw new IllegalArgumentException("Take-off time must be before landing time.");
+        if (takeoffTime.isAfter(landingTime)) {
+            throw new IllegalArgumentException("Validation: Take-off time must be before landing time.");
         }
     }
 
     public void addTickets(List<Ticket> tickets) {
         this.tickets.addAll(tickets);
+    }
+
+    public void addDiscount(Discount discount) {
+        this.discounts.add(discount);
     }
 }

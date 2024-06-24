@@ -69,6 +69,27 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- CreateDiscountRequest -->
+    <xs:element name="CreateDiscountRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="FlightCode" type="xs:string" />
+                <xs:element name="From" type="xs:dateTime" />
+                <xs:element name="To" type="xs:dateTime" />
+                <xs:element name="OffValue" type="xs:float" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- CreateDiscountResponse -->
+    <xs:element name="CreateDiscountResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Message" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- AirportListType -->
     <xs:complexType name="AirportListType">
         <xs:sequence>

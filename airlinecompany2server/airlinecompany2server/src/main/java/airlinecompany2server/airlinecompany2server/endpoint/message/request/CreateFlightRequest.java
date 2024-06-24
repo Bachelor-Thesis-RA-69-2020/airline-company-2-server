@@ -6,7 +6,7 @@ import airlinecompany2server.airlinecompany2server.model.Flight;
 import airlinecompany2server.airlinecompany2server.model.TicketPricing;
 import jakarta.xml.bind.annotation.*;
 
-@XmlRootElement(name = "CreateFlightRequest", namespace = "http://localhost:8082/")
+@XmlRootElement(name = "CreateFlightRequest")
 public class CreateFlightRequest {
 
     @XmlElement(name = "TakeOffTime", required = true)
