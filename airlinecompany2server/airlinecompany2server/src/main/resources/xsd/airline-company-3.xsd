@@ -39,6 +39,36 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- CreateFlightRequest -->
+    <xs:element name="CreateFlightRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TakeOffTime" type="xs:dateTime" />
+                <xs:element name="LandingTime" type="xs:dateTime" />
+                <xs:element name="Duration" type="xs:int" />
+                <xs:element name="LuggageRules" type="xs:string" />
+                <xs:element name="JuniorDiscount" type="xs:float" />
+                <xs:element name="DepartureAirportIata" type="xs:string" />
+                <xs:element name="ArrivalAirportIata" type="xs:string" />
+                <xs:element name="EconomyClassPrice" type="xs:float" />
+                <xs:element name="EconomyClassTicketCount" type="xs:int" />
+                <xs:element name="BusinessClassPrice" type="xs:float" />
+                <xs:element name="BusinessClassTicketCount" type="xs:int" />
+                <xs:element name="FirstClassPrice" type="xs:float" />
+                <xs:element name="FirstClassTicketCount" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- CreateFlightResponse -->
+    <xs:element name="CreateFlightResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Message" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- AirportListType -->
     <xs:complexType name="AirportListType">
         <xs:sequence>

@@ -1,6 +1,6 @@
 package airlinecompany2server.airlinecompany2server.configuration;
 
-import airlinecompany2server.airlinecompany2server.model.domain.Airport;
+import airlinecompany2server.airlinecompany2server.model.Airport;
 import airlinecompany2server.airlinecompany2server.repository.AirportRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;

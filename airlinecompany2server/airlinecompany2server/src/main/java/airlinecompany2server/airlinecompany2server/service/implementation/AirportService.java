@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import airlinecompany2server.airlinecompany2server.model.domain.Airport;
+import airlinecompany2server.airlinecompany2server.model.Airport;
 import airlinecompany2server.airlinecompany2server.repository.AirportRepository;
 import airlinecompany2server.airlinecompany2server.service.IAirportService;
 

@@ -1,4 +1,4 @@
-package airlinecompany2server.airlinecompany2server.model.domain;
+package airlinecompany2server.airlinecompany2server.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

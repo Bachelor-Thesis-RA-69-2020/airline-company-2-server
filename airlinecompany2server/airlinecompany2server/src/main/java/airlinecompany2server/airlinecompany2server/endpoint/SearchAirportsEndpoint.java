@@ -16,7 +16,7 @@ import javax.xml.transform.Source;
 
 import airlinecompany2server.airlinecompany2server.endpoint.message.request.SearchAirportsRequest;
 import airlinecompany2server.airlinecompany2server.endpoint.message.response.SearchAirportsResponse;
-import airlinecompany2server.airlinecompany2server.model.domain.Airport;
+import airlinecompany2server.airlinecompany2server.model.Airport;
 import airlinecompany2server.airlinecompany2server.service.IAirportService;
 import jakarta.xml.bind.JAXBElement;
 
@@ -40,8 +40,8 @@ public class SearchAirportsEndpoint extends BaseEndpoint {
         List<Airport> airports = airportService.search(searchRequest.getSearchFilter());
 
         SearchAirportsResponse response = new SearchAirportsResponse(airports);
-        QName qname = new QName("SearchAirportsRequest");
-        JAXBElement<SearchAirportsResponse> jaxbResponse = new JAXBElement<>(qname, SearchAirportsResponse.class, response);
+        QName qname = new QName("SearchAirportsResponse");
+        JAXBElement<SearchAirportsResponse> jaxbResponse = new JAXBElement<SearchAirportsResponse>(qname, SearchAirportsResponse.class, response);
 
         return jaxbResponse;
     }
@@ -61,16 +61,15 @@ public class SearchAirportsEndpoint extends BaseEndpoint {
 
             NodeList searchFilterNodeList = root.getElementsByTagNameNS(NAMESPACE_URI, "SearchFilter");
 
-            if (searchFilterNodeList.getLength() > 0) {
-                Element searchFilterElement = (Element) searchFilterNodeList.item(0);
-                String searchFilter = searchFilterElement.getTextContent();
-
-                SearchAirportsRequest request = new SearchAirportsRequest(searchFilter);
-
-                return request;
-            } else {
+            if (searchFilterNodeList.getLength() == 0) {
                 throw new IllegalArgumentException("SearchFilter element not found in the SOAP XML.");
-            }
+            } 
+
+            String searchFilter = ((Element) searchFilterNodeList.item(0)).getTextContent();
+
+            SearchAirportsRequest request = new SearchAirportsRequest(searchFilter);
+
+            return request;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -11,7 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.*;
 
 import airlinecompany2server.airlinecompany2server.endpoint.message.request.FindAllAirportsRequest;
 import airlinecompany2server.airlinecompany2server.endpoint.message.response.FindAllAirportsResponse;
-import airlinecompany2server.airlinecompany2server.model.domain.Airport;
+import airlinecompany2server.airlinecompany2server.model.Airport;
 import airlinecompany2server.airlinecompany2server.service.IAirportService;
 
 @Endpoint
@@ -28,7 +28,7 @@ public class FindAllAirportsEndpoint extends BaseEndpoint {
         List<Airport> airports = airportService.findAll();
         
         FindAllAirportsResponse response = new FindAllAirportsResponse(airports);
-        QName qname = new QName("FindAllAirportsRequest"); 
+        QName qname = new QName("FindAllAirportsResponse"); 
         JAXBElement<FindAllAirportsResponse> jaxbResponse =  new JAXBElement<FindAllAirportsResponse>( qname, FindAllAirportsResponse.class, response); 
 
         return jaxbResponse;

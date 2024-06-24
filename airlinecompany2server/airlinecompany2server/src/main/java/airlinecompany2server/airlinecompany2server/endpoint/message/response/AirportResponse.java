@@ -2,12 +2,12 @@ package airlinecompany2server.airlinecompany2server.endpoint.message.response;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import airlinecompany2server.airlinecompany2server.model.Airport;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
-
-import airlinecompany2server.airlinecompany2server.model.domain.Airport;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Airport")
