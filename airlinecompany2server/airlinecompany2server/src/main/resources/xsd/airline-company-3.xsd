@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://localhost:8082/"
+           targetNamespace="http://localhost:8082/"
+           elementFormDefault="qualified">
+
+    <xs:element name="FindAllAirportsRequest">
+        <xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="FindAllAirportsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Airports" type="AirportListType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="AirportListType">
+        <xs:sequence>
+            <xs:element name="Airport" type="AirportType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AirportType">
+        <xs:sequence>
+            <xs:element name="AirportName" type="xs:string"/>
+            <xs:element name="IataCode" type="xs:string"/>
+            <xs:element name="Latitude" type="xs:float"/>
+            <xs:element name="Longitude" type="xs:float"/>
+            <xs:element name="Elevation" type="xs:float"/>
+            <xs:element name="ContinentName" type="xs:string"/>
+            <xs:element name="CountryName" type="xs:string"/>
+            <xs:element name="RegionName" type="xs:string"/>
+            <xs:element name="MunicipalityName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
