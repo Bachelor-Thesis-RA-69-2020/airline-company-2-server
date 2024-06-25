@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding-block: 1rem;
+            width: 100%;
+            height: 3rem;
+            background-color: #a10a8f;
+            box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.15);
+        }
+        .logo {
+            margin-right: calc(100% - 16rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .logo-image {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        .logo-text {
+            font-family: Roboto, Arial;
+            font-size: 30px;
+            color: rgba(255, 255, 255, 1);
+        }
+        .content {
+            width: 100%;
+            padding-block: 1rem;
+        }
+        .title {
+            width: 100%;
+            font-family: Roboto, Arial;
+            font-size: 2rem;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .text {
+            width: 100%;
+            font-family: Roboto, Arial;
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 1);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        .footer {
+            width: 100%;
+        }
+        .signature {
+            margin-right: auto;
+            font-family: Roboto, Arial;
+            font-size: 1rem;
+            color: rgba(200, 200, 200, 1);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .line {
+            width: 100%;
+            height: 10px;
+            background-color: #a10a8f;
+        }
+        .logo-link {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a class="logo-link" href="cid:logo.png">
+            <span class="logo">
+                <img class="logo-image" src="cid:logo.png"/>
+                <div class="logo-text">Horizon Airways</div>
+            </span>
+        </a>
+    </div>
+    <div class="content">
+        <div class="title">
+            Ticket purchase confirmation
+        </div>
+        <div class="text">
+            We are pleased to inform you that your ticket purchase with Eclipse Air has been successfully processed. Your flight details and e-tickets are attached to this email as a PDF document. Please review the information carefully to ensure all details are correct.
+        </div>
+    </div>
+    <div class="footer">
+        <div class="signature">
+            &#169; 2024. Horizon Airways - All rights reserved
+        </div>
+        <div class="line"></div>
+    </div>
+</body>
+</html>
