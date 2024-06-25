@@ -130,6 +130,27 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- BookFlightRequest -->
+    <xs:element name="BookFlightRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="FlightCode" type="xs:string" />
+                <xs:element name="Class" type="xs:string" />
+                <xs:element name="CustomerEmail" type="xs:string" />
+                <xs:element name="Passengers" type="PassengerListType" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- BookFlightResponse -->
+    <xs:element name="BookFlightResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Message" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- AirportListType -->
     <xs:complexType name="AirportListType">
         <xs:sequence>
@@ -218,6 +239,22 @@
         <xs:sequence>
             <xs:element name="JuniorOffValue" type="xs:float"/>
             <xs:element name="RegularOffValue" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- PassengerListType -->
+    <xs:complexType name="PassengerListType">
+        <xs:sequence>
+            <xs:element name="Passenger" type="PassengerType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- PassengerType -->
+    <xs:complexType name="PassengerType">
+        <xs:sequence>
+            <xs:element name="FullName" type="xs:string"/>
+            <xs:element name="BirthDate" type="xs:dateTime"/>
+            <xs:element name="PassportID" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
