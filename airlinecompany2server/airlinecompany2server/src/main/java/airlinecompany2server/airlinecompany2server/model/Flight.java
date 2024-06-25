@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import airlinecompany2server.airlinecompany2server.model.enumeration.FlightClass;
 import jakarta.validation.constraints.*;
 
 import java.time.Duration;
@@ -132,5 +133,33 @@ public class Flight extends BaseEntity {
 
     public void addDiscount(Discount discount) {
         this.discounts.add(discount);
+    }
+
+    public float getTicketPriceByClass(FlightClass flightClass) {
+        Ticket ticket = tickets.stream().filter(t -> t.getType().equals(flightClass)).findFirst().orElse(null);
+
+        if(ticket == null) {
+            return -100;
+        }
+
+        return ticket.getPrice();
+    }
+
+    public int getTicketCountByClass(FlightClass flightClass) {
+
+
+        int count = tickets.stream().filter(t -> (flightClass == null || t.getType().equals(flightClass) && !t.getIsBought())).toList().size();
+        
+        return count;
+    }
+
+    public float getActiveDiscount() {
+        Discount discount = discounts.stream().filter(d -> d.isActive()).findFirst().orElse(null);
+
+        if(discount == null) {
+            return 0;
+        }
+
+        return discount.getOffValue();
     }
 }

@@ -45,7 +45,6 @@
             <xs:sequence>
                 <xs:element name="TakeOffTime" type="xs:dateTime" />
                 <xs:element name="LandingTime" type="xs:dateTime" />
-                <xs:element name="Duration" type="xs:int" />
                 <xs:element name="LuggageRules" type="xs:string" />
                 <xs:element name="JuniorDiscount" type="xs:float" />
                 <xs:element name="DepartureAirportIata" type="xs:string" />
@@ -90,6 +89,47 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- FindFlightByCodeRequest -->
+    <xs:element name="FindFlightByCodeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Code" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- FindFlightByCodeResponse -->
+    <xs:element name="FindFlightByCodeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Flight" type="FlightType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- SearchFlightsRequest -->
+    <xs:element name="SearchFlightsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="From" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="To" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="DepartureAirportIATA" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="ArrivalAirportIATA" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="FlightClass" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="PassengerCount" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- SearchFlightsResponse -->
+    <xs:element name="SearchFlightsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Flights" type="FlightListType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <!-- AirportListType -->
     <xs:complexType name="AirportListType">
         <xs:sequence>
@@ -109,6 +149,75 @@
             <xs:element name="CountryName" type="xs:string"/>
             <xs:element name="RegionName" type="xs:string"/>
             <xs:element name="MunicipalityName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FlightListType -->
+    <xs:complexType name="FlightListType">
+        <xs:sequence>
+            <xs:element name="Flight" type="FlightType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FlightType -->
+    <xs:complexType name="FlightType">
+        <xs:sequence>
+            <xs:element name="Code" type="xs:string"/>
+            <xs:element name="LuggageRules" type="xs:string"/>
+            <xs:element name="Relation" type="RelationType"/>
+            <xs:element name="Schedule" type="ScheduleType"/>
+            <xs:element name="Pricing" type="TicketPricingType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- RelationType -->
+    <xs:complexType name="RelationType">
+        <xs:sequence>
+            <xs:element name="DepartureAirport" type="AirportRelationType"/>
+            <xs:element name="ArrivalAirport" type="AirportRelationType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- RelationType -->
+    <xs:complexType name="AirportRelationType">
+        <xs:sequence>
+            <xs:element name="IATACode" type="xs:string"/>
+            <xs:element name="Name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ScheduleType -->
+    <xs:complexType name="ScheduleType">
+        <xs:sequence>
+            <xs:element name="TakeOffTime" type="xs:dateTime"/>
+            <xs:element name="LandingTime" type="xs:dateTime"/>
+            <xs:element name="Duration" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- TicketPricingType -->
+    <xs:complexType name="TicketPricingType">
+        <xs:sequence>
+            <xs:element name="EconomyClass" type="ClassTicketPricingType" nillable="true"/>
+            <xs:element name="BusinessClass" type="ClassTicketPricingType" nillable="true"/>
+            <xs:element name="FirstClass" type="ClassTicketPricingType" nillable="true"/>
+            <xs:element name="Discount" type="DiscountType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ClassTicketPricingType -->
+    <xs:complexType name="ClassTicketPricingType">
+        <xs:sequence>
+            <xs:element name="Price" type="xs:float"/>
+            <xs:element name="Count" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- DiscountType -->
+    <xs:complexType name="DiscountType">
+        <xs:sequence>
+            <xs:element name="JuniorOffValue" type="xs:float"/>
+            <xs:element name="RegularOffValue" type="xs:float"/>
         </xs:sequence>
     </xs:complexType>
 
