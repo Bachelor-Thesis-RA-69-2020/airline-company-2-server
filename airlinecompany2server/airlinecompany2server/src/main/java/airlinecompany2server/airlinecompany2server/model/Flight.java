@@ -135,6 +135,14 @@ public class Flight extends BaseEntity {
         this.discounts.add(discount);
     }
 
+    public String buyTicket(FlightClass flightClass, Booking booking) {
+        Ticket ticket = tickets.stream().filter(t -> t.getType().equals(flightClass) && !t.getIsBought()).findFirst().orElseThrow();
+
+        ticket.buy(booking);
+
+        return ticket.getCode();
+    }
+
     public float getTicketPriceByClass(FlightClass flightClass) {
         Ticket ticket = tickets.stream().filter(t -> t.getType().equals(flightClass)).findFirst().orElse(null);
 

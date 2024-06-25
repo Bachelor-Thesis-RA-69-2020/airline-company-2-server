@@ -22,6 +22,8 @@ public class Ticket extends BaseEntity {
 
     private Boolean isBought;
 
+    private Booking booking;
+
     public Ticket(String code, Float price, FlightClass type) {
         this.code = code;
         this.price = price;
@@ -43,6 +45,15 @@ public class Ticket extends BaseEntity {
 
     public Boolean getIsBought() {
         return isBought;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void buy(Booking booking) {
+        this.isBought = true;
+        this.booking = booking;
     }
 }
 
