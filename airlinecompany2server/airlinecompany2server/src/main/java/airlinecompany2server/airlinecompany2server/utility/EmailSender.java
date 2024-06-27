@@ -22,7 +22,7 @@ public class EmailSender {
     private JavaMailSender javaMailSender;
 
     public void sendTicketsEmail(String to, byte[] pdf) {
-        String title = "Passwordless sign in request accepted";
+        String title = "Ticket purchase confirmation";
         String htmlContent = "";
 
         String filePath = "src/main/resources/templates/bookingEmailTemplate.html";
