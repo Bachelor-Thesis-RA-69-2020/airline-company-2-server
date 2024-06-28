@@ -23,10 +23,10 @@ public class SoapConfiguration {
 		return new ServletRegistrationBean<MessageDispatcherServlet>(messageDispatcherServlet, "/ws/*");
 	}
 
-    @Bean(name = "airline-company-3")
+    @Bean(name = "airline-company-2")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema airlineCompanySchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("AirlineCompany3Port");
+        wsdl11Definition.setPortTypeName("AirlineCompany2Port");
         wsdl11Definition.setTargetNamespace("http://localhost:8082/");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setSchema(airlineCompanySchema);
@@ -35,6 +35,6 @@ public class SoapConfiguration {
 
     @Bean
     public XsdSchema airlineCompanySchema() {
-        return new SimpleXsdSchema(new ClassPathResource("xsd/airline-company-3.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("xsd/airline-company-2.xsd"));
     }
 }
