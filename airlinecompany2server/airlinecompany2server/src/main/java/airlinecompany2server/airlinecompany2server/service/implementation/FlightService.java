@@ -101,15 +101,15 @@ public class FlightService implements IFlightService {
     }
 
     private List<Flight> searchByRelation(List<Flight> flights, String departureAirport, String arrivalAirport) {
-        if (departureAirport != null && arrivalAirport != null && departureAirport.equals(arrivalAirport)) {
+        if (departureAirport != null && !departureAirport.isEmpty() && arrivalAirport != null && !arrivalAirport.isEmpty() && departureAirport.equals(arrivalAirport)) {
             throw new IllegalArgumentException("Validation: departureAirport and arrivalAirport cannot be the same.");
         }
 
-        if (departureAirport != null) {
+        if (departureAirport != null && !departureAirport.isEmpty()) {
             airportRepository.findByIataCode(departureAirport).orElseThrow();
         }
         
-        if (arrivalAirport != null) {
+        if (arrivalAirport != null && !arrivalAirport.isEmpty()) {
             airportRepository.findByIataCode(arrivalAirport).orElseThrow();
         }
 
@@ -170,7 +170,7 @@ public class FlightService implements IFlightService {
     }
 
     private List<Flight> searchByDepartureAirport(List<Flight> flights, String departureAirport) {
-        if (departureAirport != null) {
+        if (departureAirport != null && !departureAirport.isEmpty()) {
             flights = flights.stream()
                     .filter(flight -> flight.getDepartureAirport().getIataCode().equals(departureAirport))
                     .collect(Collectors.toList());
@@ -179,7 +179,7 @@ public class FlightService implements IFlightService {
     }
 
     private List<Flight> searchByArrivalAirport(List<Flight> flights, String arrivalAirport) {
-        if (arrivalAirport != null) {
+        if (arrivalAirport != null && !arrivalAirport.isEmpty()) {
             flights = flights.stream()
                     .filter(flight -> flight.getArrivalAirport().getIataCode().equals(arrivalAirport))
                     .collect(Collectors.toList());
